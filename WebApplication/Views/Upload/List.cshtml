@@ -1,0 +1,57 @@
+﻿@model System.Collections.Generic.List<WebApplication.Models.DataAccessPostgreSqlProvider.DbWorkList>
+@{
+    ViewBag.Title = "WorkList";
+    Layout = "_Layout";
+}
+<h2>@ViewBag.Title</h2>
+@foreach (var list in Model)
+{
+<div>
+    Наименование:
+    @list.NameOfCompany
+    Адрес:
+    @list.Address
+    Категория:
+    @list.Category
+    Численность сотрудников:
+    @list.Number
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <td>ФИО</td>
+                <td>Должность</td>
+                <td>Стаж работы</td>
+            </tr>
+        </thead>
+        @if (list.Workers != null)
+        {
+            foreach (var worker in list.Workers)
+            {
+                <tr>
+                    <td>@worker.Name</td>
+                    <td>@worker.Position</td>
+                    <td>@worker.Experience</td>
+                </tr>
+            }
+        }
+    </table>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <td>Наименование задачи</td>
+                <td>Пояснения</td>
+            </tr>
+        </thead>
+        @if (list.Tasks != null)
+        {
+            foreach (var task in list.Tasks)
+            {
+                <tr>
+                    <td>@task.NameOfTask</td>
+                    <td>@task.Explanations</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+}

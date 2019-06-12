@@ -1,0 +1,49 @@
+﻿@model WindowsFormsApp1.Class1
+
+@{
+    ViewBag.Title = "Список " + Model.NameOfCompany;
+    Layout = "_Layout";
+}
+
+<h2>Список @Model.NameOfCompany</h2>
+ 
+Категория:  @Model.Category
+Адрес: @Model.Address
+Численность сотрудников: @Model.Number
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <td>Наименование задачи</td>
+            <td>Пояснения</td>
+        </tr>
+    </thead>
+    @if (Model.Tasks != null)
+    {
+        foreach (var task in Model.Tasks)
+        {
+            <tr>
+                <td>@task.NameOfTask</td>
+                <td>@task.Explanations</td>
+            </tr>
+        }
+    }
+</table>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <td>ФИО</td>
+            <td>Должность</td>
+            <td>Стаж работы</td>
+        </tr>
+    </thead>
+    @foreach (var worker in Model.Workers)
+    {
+        <tr>
+            <td>@worker.Name</td>
+            <td>@worker.Position</td>
+            <td>@worker.Experience</td>
+        </tr>
+    }
+</table>
